@@ -56,7 +56,6 @@ def clean_text(text):
     text = text.strip()  # Remove leading/trailing spaces
     return text
 
-
     
 #cleaning the questions one by one from the above list.
 #The cleaning process is done with the help of the 'clean_text' function. (step 10)
@@ -70,9 +69,23 @@ for answer in answers:
     clean_answers.append(clean_text(answer))
     
     
-    
-    
-    
+#counting the occarence of the word in the clean_questions and clean_answers. (step 11)    
+word2count = {}
+#For clean_questions
+for question in clean_questions:
+    for word in question.split():
+        if word not in word2count:
+            word2count[word]=1
+        else:
+            word2count[word] +=1
+#For clean_answers
+for answer in clean_answers:
+    for word in answer.split():
+        if word not in word2count:
+            word2count[word] = 1
+        else:
+            word2count[word] +=1
+        
     
     
     
