@@ -86,10 +86,22 @@ for answer in clean_answers:
         else:
             word2count[word] +=1
         
-    
-    
-    
-    
+#creating 2 dictionaries to convert/map question word and answer word into a unqiue integer. (step 12)    
+#converting question words into a unique int
+threshold = 20
+questionsword2int = {}
+word_number = 0
+for word,count in word2count.items():
+    if count >= threshold:
+        questionsword2int[word] = word_number
+        word_number += 1
+#converting answer words into a unique int    
+answersword2int = {}
+word_number = 0
+for word,count in word2count.items():
+    if count >= threshold:
+        answersword2int[word] = word_number
+        word_number += 1    
     
     
     
