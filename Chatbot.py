@@ -103,7 +103,23 @@ for word,count in word2count.items():
         answersword2int[word] = word_number
         word_number += 1    
     
+#Adding the tokens into questions and answer which is converted into integer. (step 13)
+tokens = ['<PAD>', '<EOS>', '<OUT>', '<SOS>']   
+# <PAD> is used to add special charecter or symbol which is used to extend the shorter sequence to match all sequence with same length
+# <EOS> is End of Statement which indicates the chat on conclusion with the model
+# <OUT> is used to respond to the question which the chatbot don't know, like chatbot is don't know about the question.
+# <SOS> is Start of Sequence which indicates the conversation is started, it provides a single that the chat is started.
+for token in tokens:
+    questionsword2int[token] = len(questionsword2int) + 1
+for token in tokens:
+    answersword2int[token] = len(answersword2int) + 1    
     
-    
-    
-    
+#creating a dictionary to inverse the answers2int, previously the key is charector and value is integer in answers2int dictionary.
+#here we we inverse that into key to integer and value to char in new dictionary.
+answersints2word = {w_i: w for w, w_i in answersword2int.items()}   
+
+#Adding the <EOS> at the end of all answers
+for i in range(len(clean_answers)):
+    clean_answers[i] += ' <EOS>'
+
+
